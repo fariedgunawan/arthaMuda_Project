@@ -9,6 +9,8 @@ import AddOutcome from "./pages/AddOutcome";
 import Details from "./pages/Details";
 import DetailsIncome from "./pages/DetailsIncome";
 import DetailsOutcome from "./pages/DetailsOutcome";
+import EditIncome from "./pages/EditIncome";
+import EditOutcome from "./pages/EditOutcome";
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +26,8 @@ export default function App() {
         <Stack.Screen name="Details" component={Details} />
         <Stack.Screen name="DetailsIncome" component={DetailsIncome} />
         <Stack.Screen name="DetailsOutcome" component={DetailsOutcome} />
+        <Stack.Screen name="EditIncome" component={EditIncome} />
+        <Stack.Screen name="EditOutcome" component={EditOutcome} />
       </Stack.Navigator>
     </NavigationContainer>
   );

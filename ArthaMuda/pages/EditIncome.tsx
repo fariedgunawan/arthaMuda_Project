@@ -4,65 +4,57 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Feather from "@expo/vector-icons/Feather";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
-export default function Dashboard() {
+export default function EditIncome() {
   const navigation = useNavigation();
   return (
     <ImageBackground source={require("../assets/bg-img.png")} className="min-h-screen">
       <StatusBar backgroundColor="#3339B4" barStyle="light-content" />
-      <View className="bg-[#3339B4] px-[16px] pb-[90px] rounded-br-[50px] rounded-bl-[50px]">
-        <View className="header flex flex-row items-center justify-between mt-[10px]">
-          <Text className="text-[30px] font-bold text-white">Hello User</Text>
+      <View className="bg-[#3339B4] px-[16px] pb-[30px] rounded-br-[50px] rounded-bl-[50px]">
+        <View className="header flex flex-row items-center justify-between mt-[30px]">
+          <TouchableOpacity onPress={() => navigation.navigate("Dashboard")}>
+            <Ionicons name="chevron-back" size={35} color="white" />
+          </TouchableOpacity>
+          <Text className="text-[30px] font-bold text-white">Edit Income</Text>
           <Feather name="user" size={40} color="white" />
         </View>
 
-        <View className="mt-[50px] px-[20px]">
-          <Text className="font-regular text-[20px] text-white">You have</Text>
-        </View>
-
-        <View className="saldo flex flex-row justify-between px-[20px] mt-[10px] items-center">
-          <Text className="text-[30px] font-bold text-white">Rp.1.500.000</Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Details")}>
-            <Text className="font-regular text-white">See Details</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View className="px-[20px] mt-[10px] ">
-          <Text className="text-white">Last update 10.00 12/12/2024</Text>
-        </View>
-      </View>
-
-      <View className="bar flex justify-center items-center -mt-[50px]">
-        <View className="w-[350px] bg-white rounded-[20px] px-[20px] py-[10px] flex flex-row items-center justify-between">
-          <TouchableOpacity onPress={() => navigation.navigate("AddIncome")}>
-            <View className="flex flex-col items-center gap-2">
-              <Image className="w-[40px] h-[40px]" source={require("../assets/income.png")} />
-              <Text className="text-[12px] font-bold text-[#3339B4]">Add Income</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate("AddOutcome")}>
-            <View className="flex flex-col items-center gap-2">
-              <Image className="w-[40px] h-[40px]" source={require("../assets/outcome.png")} />
-              <Text className="text-[12px] font-bold text-[#3339B4]">Add Outcome</Text>
-            </View>
-          </TouchableOpacity>
-          <View className="flex flex-col items-center gap-2">
-            <Image className="w-[40px] h-[40px]" source={require("../assets/stats.png")} />
-            <Text className="text-[12px] font-bold text-[#3339B4]">Stats</Text>
+        <View className="flex flex-col gap-[25px] px-[20px] mt-[10px]">
+          <View className="flex flex-row items-center border-b-[2px] border-b-white pb-2">
+            <Text className="text-white font-medium text-[18px] mr-2">Title :</Text>
+            <TextInput placeholder="Input Income Title" placeholderTextColor={"grey"} className="text-white text-[18px]"></TextInput>
           </View>
+
+          <View className="flex flex-row items-center border-b-[2px] border-b-white pb-2">
+            <Text className="text-white font-medium text-[18px] mr-2">Rp. :</Text>
+            <TextInput placeholder="Input Income" placeholderTextColor={"grey"} className="text-white text-[18px]"></TextInput>
+          </View>
+
+          <View className="flex flex-row items-center border-b-[2px] border-b-white pb-2">
+            <Text className="text-white font-medium text-[18px] mr-2">Date :</Text>
+            <TextInput placeholder="Input Date" placeholderTextColor={"grey"} className="text-white text-[18px]"></TextInput>
+          </View>
+        </View>
+        <View className="flex flex-row-reverse items-center justify-between">
+          <TouchableOpacity>
+            <Text className="text-white font-semibold text-[24px] mt-[25px] text-right px-[20px]">Add +</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text className="text-red-600 font-semibold text-[24px] mt-[25px] text-right px-[20px]">Delete</Text>
+          </TouchableOpacity>
         </View>
       </View>
 
       <View className="px-[16px] mt-[30px]">
         <View className="flex flex-row items-center justify-between">
-          <Text className="text-[25px] font-bold text-[#3339B4]">Recent</Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Details")}>
+          <Text className="text-[25px] font-bold text-[#3339B4]">Last Income</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("DetailsIncome")}>
             <Text className="text-[#3339B4] text-[16px]">See more</Text>
           </TouchableOpacity>
         </View>
 
         <View className="mt-[40px]">
-        <TouchableOpacity onPress={() => navigation.navigate("EditIncome")}>
           <View className="card flex flex-row items-center justify-between bg-[#3339B4] px-[20px] py-[20px] rounded-2xl">
             <View className="flex flex-row items-center">
               <Image className="w-[50px] h-[50px]" source={require("../assets/income.png")} />
@@ -76,15 +68,13 @@ export default function Dashboard() {
               <Text className="text-right text-white">13.00</Text>
             </View>
           </View>
-          </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => navigation.navigate("EditOutcome")}>
           <View className="card flex flex-row items-center justify-between bg-[#3339B4] px-[20px] py-[20px] rounded-2xl mt-[10px]">
             <View className="flex flex-row items-center">
-              <Image className="w-[50px] h-[50px]" source={require("../assets/outcome.png")} />
+              <Image className="w-[50px] h-[50px]" source={require("../assets/income.png")} />
               <View className="ml-[20px]">
-                <Text className="text-white font-bold text-[20px]">Bayar Air</Text>
-                <Text className="text-[#FF4343] font-regular mt-[5px]">- Rp.500.000</Text>
+                <Text className="text-white font-bold text-[20px]">Gajian</Text>
+                <Text className="text-[#11FFC6] font-regular mt-[5px]">+ Rp.1.500.000</Text>
               </View>
             </View>
             <View>
@@ -92,7 +82,6 @@ export default function Dashboard() {
               <Text className="text-right text-white">13.00</Text>
             </View>
           </View>
-          </TouchableOpacity>
 
           <View className="card flex flex-row items-center justify-between bg-[#3339B4] px-[20px] py-[20px] rounded-2xl mt-[10px]">
             <View className="flex flex-row items-center">

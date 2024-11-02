@@ -44,7 +44,9 @@ export default function AddOutcome() {
       <View className="px-[16px] mt-[30px]">
         <View className="flex flex-row items-center justify-between">
           <Text className="text-[25px] font-bold text-[#3339B4]">Last Outcome</Text>
-          <Text className="text-[#3339B4] text-[16px]">See more</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("DetailsOutcome")}>
+            <Text className="text-[#3339B4] text-[16px]">See more</Text>
+          </TouchableOpacity>
         </View>
 
         <View className="mt-[40px]">
